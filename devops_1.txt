@@ -1,0 +1,21 @@
+docker run -> สั่งรัน container นั้นด้วย image อะไร
+docker image -> สร้างต้นแบบ environment 
+docker container -> ตัวก็อปปี้ environment
+1 image มีได้หลาย container 
+imahe แปลงตัวเองเป็น container 
+
+Basic docker command
+docker run hello-world -> ได้ container ใหม่เสมอ
+docker ps -> แสดง container 
+docker rm <container ID> -> ลบคอนเทนเนอร์
+	docker rm -aq -> quiet ได้เฉพา ID
+docker rm $(docker ps -aq) -> ลบคอนเทนเนอร์ทั้งหมดที่ไม่ได้ใช้งาน
+	docker ps -q -> แสดงเฉพาะ id
+docker images -> แสดง image
+docker start <container_id> -> start container 
+docker stop <container_id>
+องค์กระกอบของ web app	-> language
+		-> database
+		-> web server รับ request จาก client, ตอบ response 
+
+winpty docker run -it busybox sh
