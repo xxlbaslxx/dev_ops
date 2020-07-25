@@ -1,0 +1,51 @@
+mkdir simple-webapp
+winpty docker run -it ubuntu bash
+->setting ubuntu
+	apt update
+	*apt search python ไว้หาชื่อ package
+	apt install python3 -y
+	apt install python3-pip -y
+	pip3 install flask
+	apt install vim -y
+cd opt
+vim app.py
+
+FLASK_APP=app.py flask run --host=0.0.0.0
+
+how to set up for dev
+1.install os (operation system) -> Ubuntu (winpty docker run -it ubuntu bash)
+2.update ubuntu repo apt update (apt update)
+3.install python apt install python3 -y
+4.install python3-pip (apt install python3-pip -y)
+5.install Flask dependencies (pip3 install flask)
+6.write python app (app.py)
+7.start flask app (FLASK_APP=app.py flask run --host=0.0.0.0)
+*but we can build these instructure to container
+
+->in directory simple-webapp
+touch Dockerfile
+
+#Dockerfile
+FROM ubuntu
+
+RUN apt update
+RUN apt-get install python3 -y
+RUN apt-get install python3-pip -y
+RUN pip3 install flask
+
+COPY app.py /opt/
+
+ENDTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0 --port=8080
+
+##end
+
+$ docker build -t xxlbaslxx/simple-webapp:beta1 .
+$ docker run --name simple-webapp -p 5000:8080 xxlbaslxx/simple-webapp:1
+$ docker run -d --name simple-webapp -p 5000:8080 xxlbaslxx/simple-webapp:beta1
+
+image name -> xxlbaslxx/simple-webapp
+
+doker history <image name>
+
+->docker layer
+การ build ถ้าไม่มีการเปลี่ยนแปลง จะใช้ cache เดิม
