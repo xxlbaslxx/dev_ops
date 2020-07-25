@@ -1,0 +1,24 @@
+สร้าง docker image ด้วยตัวเอง
+https://github.com/prakhar1989/docker-curriculum
+
+git clone https://github.com/prakhar1989/docker-curriculum.git 
+git config user.name ""
+
+เข้าไปในโฟลเดอร์
+สร้างไฟล์ Dockerfile เปิดมาแก้ไขด้วย vscode
+
+เอกสารวิธีสร้าง
+https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+คำสั่ง 
+FROM <image> ใช้ image ของคนอื่นมาสร้าง image
+WORKDIR <dir> ตั้ง working directory ที่จะเก็บ app
+COPY <src dir> <dest dir> copy ไฟล์ไปไว้ working directory
+CMD ระบุคำสั่ง
+RUN ติดตั้งโปแกรมที่ต้องการผ่าน dependency เช่น pip
+EXPOSE ระบุ port
+
+ต้อองสั่ง docker build ในตำแหน่งเดียวกับ docker file นิยมนำชื่อ git นำหน้า
+docker build <option> <path>
+docker build -t xxlbaslxx/dockerpy:latest .
+	-t ระบุ tag ด้วย
+	- .(จุด) คือการระบุตำแหน่งไดเรคทอรี่ปัจจุบัน
